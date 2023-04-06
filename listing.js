@@ -58,11 +58,11 @@ function addToLocalStorage(){
     const item = {
         id: id,
         name: name.value,
-        profilePicture: userPhoto.value.replace("C:\\fakepath\\", "../user_images/"),
+        profilePicture: userPhoto.value.replace("C:\\fakepath\\", "./user_images/"),
         productName: itemName.value,
-        productImg: itemPhoto1.value.replace("C:\\fakepath\\", "../electronics_imgs/"),
+        productImg: itemPhoto1.value.replace("C:\\fakepath\\", "./electronics_imgs/"),
         productType: itemName.value.toLowerCase(),
-        productImgList: [itemPhoto1.value.replace("C:\\fakepath\\", "../electronics_imgs/"), itemPhoto2.value.replace("C:\\fakepath\\", "../electronics_imgs/"), itemPhoto3.value.replace("C:\\fakepath\\", "../electronics_imgs/"), itemPhoto4.value.replace("C:\\fakepath\\", "../electronics_imgs/")],
+        productImgList: [itemPhoto1.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto2.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto3.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto4.value.replace("C:\\fakepath\\", "./electronics_imgs/")],
         productPrice: itemPrice.value,
         productDescription: itemDescription.value
     }
