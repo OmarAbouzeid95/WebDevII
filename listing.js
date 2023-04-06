@@ -31,7 +31,7 @@ function validate(){
     
     // validating that all input fields are inserted
     if(name.value.trim(' ') === '' || itemName.value.trim(' ') === '' || itemPhoto1.value === '' || itemPhoto2.value === '' || itemPhoto3.value === '' || itemPhoto4.value === '' ||
-       userPhoto.value === '' || itemDescription.value.trim(' ') === '' || itemPrice.trim(' ') === ''){
+       userPhoto.value === '' || itemDescription.value.trim(' ') === '' || itemPrice.value.trim(' ') === ''){
         alert("Please fill out all the fields in the form before submitting")
        }else {
             // calling addToLocalStorage function to add to the DB
