@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item listing</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="./listing.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img class="store-logo" src="images/lg_logo.png" alt="Store logo"></a>
+        <ul id="nav-bar">
+            <li><a href="about-us.html" class="nav-item">About us</a></li>
+            <li><a href="sign-in.html" class="nav-item">Sign in</a></li>
+            <li><a style="color: aliceblue;" href="upload.html" class="nav-item">List item</a></li>
+        </ul>
+    </header>
+    <main>
+        <h2 class="heading">List an item</h2>
+        <form class="list-form">
+            <label for="name">Name<span class="req"> *</span></label>
+            <input class="input" type="text" id="name" name="name" placeholder="Enter your full name" required>
+            <label style="display: inline; padding-right:10em;"for="user-photo">User photo<span class="req"> *</span></label>
+            <input class="input" type="file" id="user-photo" name="user-photo" accept="image/png, image/jpeg, image/jpg" required>
+            <label for="item-name">Product name<span class="req"> *</span></label>
+            <input class="input" type="text" id="item-name" name="item-name" placeholder="iPhone 13" required>
+            <label for="item-price">Price<span class="req"> *</span></label>
+            <input class="input" type="text" id="item-price" placeholder="$1400" name="item-price" required>
+            <label style="display: inline; padding-right:10em;"for="item-photo1">Product photo 1<span class="req"> *</span></label>
+            <input class="input" type="file" id="item-photo1" name="item-photo1" accept="image/png, image/jpeg, image/jpg" required>
+            <label style="display: inline; padding-right:10em;"for="item-photo2">Product photo 2<span class="req"> *</span></label>
+            <input class="input" type="file" id="item-photo2" name="item-photo2" accept="image/png, image/jpeg, image/jpg" required>
+            <label style="display: inline; padding-right:10em;"for="item-photo3">Product photo 3<span class="req"> *</span></label>
+            <input class="input" type="file" id="item-photo3" name="item-photo3" accept="image/png, image/jpeg, image/jpg" required>
+            <label style="display: inline; padding-right:10em;"for="item-photo4">Product photo 4<span class="req"> *</span></label>
+            <input class="input" type="file" id="item-photo4" name="item-photo4" accept="image/png, image/jpeg, image/jpg" required>
+            <label for="description">Product description<span class="req"> *</span></label>
+            <textArea class="list-textArea" id = "item-description" placeholder="write a description for your product..." required></textArea>
+            <div class="form-btns">
+                <button style="background-color: #12CB34;" class="form-btn" id="submit-btn">Submit</button>
+                <input style="background-color: #E01C1C;"class="form-btn" type="reset" value="Clear All">
+            </div>
+        </form>
+    </main><br><br>
+    <footer class="footer">
+        <div class="fcontainer">
+          <div class="frow">
+            <div class="fcolumn">
+              <h4>About Us</h4>
+              <ul>
+                <li><a href="#">Charity</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Store Locator</a></li>
+                <li><a href="#">Careers</a></li>
+              </ul>
+            </div>
+            <div class="fcolumn">
+              <h4>Help</h4>
+              <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Payment Options</a></li>
+                <li><a href="#">Service Agreement</a></li>
+                <li><a href="site-map.html">Site Map</a></li>
+              </ul>
+            </div>
+            <div class="fcolumn">
+              <h4>More Services</h4>
+              <ul>
+                <li><a href="#">Gift Cards</a></li>
+                <li><a href="#">Discounts</a></li>
+                <li><a href="#">Coming Soon</a></li>
+                <li><a href="#">Weekly Offers</a></li>
+              </ul>
+            </div>
+            <div class="fcolumn">
+              <h4>Follow Us</h4>
+              <div class="social-sites">
+                <a href="#"><img class="img-social" src="images/lg_facebook.png" alt="Facebook"></img></a>
+                <a href="#"><img class="img-social" src="images/lg_twitter.png" alt="Twitter"></img></a>
+                <a href="#"><img class="img-social" src="images/lg_instagram.png" alt="Instagram"></img></a>
+                <a href="#"><img class="img-social" src="images/lg_youtube.png" alt="Youtube"></img></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
