@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="productInfo.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <a href="products.html"><img class="store-logo" src="images/lg_logo.png" alt="Store logo"></a>
+        <ul id="nav-bar">
+            <li><a href="about-us.html" class="nav-item">About us</a></li>
+            <li><a href="index.html" class="nav-item" id="signIn-btn">Sign in</a></li>
+            <li><a href="upload.html" class="nav-item">List item</a></li>
+        </ul>
+    </header>
+    <main>
+        <h2 class="page-title">Product details</h2>
+        <section class="productInfo-container">
+            
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="fcontainer">
+          <div class="frow">
+            <div class="fcolumn">
+              <h4>About Us</h4>
+              <ul>
+                <li><a href="#">Charity</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Store Locator</a></li>
+                <li><a href="#">Careers</a></li>
+              </ul>
+            </div>
+            <div class="fcolumn">
+              <h4>Help</h4>
+              <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Payment Options</a></li>
+                <li><a href="#">Service Agreement</a></li>
+                <li><a href="site-map.html">Site Map</a></li>
+              </ul>
+            </div>
+            <div class="fcolumn">
+              <h4>More Services</h4>
+              <ul>
+                <li><a href="#">Gift Cards</a></li>
+                <li><a href="#">Discounts</a></li>
+                <li><a href="#">Coming Soon</a></li>
+                <li><a href="#">Weekly Offers</a></li>
+              </ul>
+            </div>
+            <div class="fcolumn">
+              <h4>Follow Us</h4>
+              <div class="social-sites">
+                <a href="#"><img class="img-social" src="images/lg_facebook.png" alt="Facebook"></img></a>
+                <a href="#"><img class="img-social" src="images/lg_twitter.png" alt="Twitter"></img></a>
+                <a href="#"><img class="img-social" src="images/lg_instagram.png" alt="Instagram"></img></a>
+                <a href="#"><img class="img-social" src="images/lg_youtube.png" alt="Youtube"></img></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+  // selector
+  const signInBtn = document.getElementById("signIn-btn")
+  // checking if a user is logged in
+  if (localStorage.getItem("loggedUser")){
+    signInBtn.innerText = 'Sign out'
+  }
+  // adding event listener
+  signInBtn.addEventListener("click", () => {
+    // remove the loggedUser attribute
+    localStorage.removeItem("loggedUser")
+  })
+</script>
+</html>
