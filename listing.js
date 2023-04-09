@@ -72,7 +72,7 @@ function addToLocalStorage(){
     localStorage.setItem("db", JSON.stringify(localStorageData))
 
     // redirecting to the homepage after
-    location.href = "./index.html"
+    location.href = "./products.html"
 
 }
 

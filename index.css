@@ -8,6 +8,10 @@ img {
   max-width: 100%;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
 }
@@ -47,6 +51,31 @@ header {
 
 .nav-item:hover {
   text-decoration: underline;
+}
+
+.searchbar-container {
+  width: 98%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin-right: 1em;
+}
+
+#searchbar{
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 0.35em;
+  width: 35%;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 0;
+  width: 35px;
+}
+
+.searchIcon:hover {
+  cursor:pointer;
 }
 
 /* Home page */
@@ -185,8 +214,9 @@ label {
   position: absolute;
   right: 0;
   top: 0;
-  height: 100vh;
-  width: 100vw;
+  bottom: 0;
+  left: 0;
+  min-height: 100%;
   background-color:rgba(255, 255, 255, 0.7);
   z-index: 2;
   display: flex;
@@ -303,6 +333,10 @@ label {
   }
 }
 
+#welcome-title {
+  margin: 1em;
+}
+
 .page-title {
   margin: 1.5em;
 }
@@ -359,6 +393,26 @@ label {
   height: 225px;
   object-fit: contain;
 }
+
+.allProducts-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.allProducts-link {
+  text-decoration: none;
+  color: white;
+  padding: 0.5em 0.95em;
+  background-color: blueviolet;
+  font-weight: bold;
+  border-radius: 0.35em;
+}
+
+.allProducts-link:hover {
+  cursor: pointer;
+}
+
 
 @media (max-width: 550px){
   .product-test img{
