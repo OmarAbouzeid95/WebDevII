@@ -74,4 +74,17 @@
     </div>
   </footer>
 </body>
+<script>
+  // selector
+  const signInBtn = document.getElementById("signIn-btn")
+  // checking if a user is logged in
+  if (localStorage.getItem("loggedUser")){
+    signInBtn.innerText = 'Sign out'
+  }
+  // adding event listener
+  signInBtn.addEventListener("click", () => {
+    // remove the loggedUser attribute
+    localStorage.removeItem("loggedUser")
+  })
+</script>
 </html>
