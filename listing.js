@@ -18,7 +18,7 @@ if(localStorage.getItem("loggedUser") === null) {
                         <label for="item-name">Product name<span class="req"> *</span></label>
                         <input class="input" type="text" id="item-name" name="item-name" placeholder="iPhone 13" required>
                         <label for="item-price">Price<span class="req"> *</span></label>
-                        <input class="input" type="text" id="item-price" placeholder="$1400" name="item-price" required>
+                        <input class="input" type="text" id="item-price" placeholder="Amount in Dollars" name="item-price" required>
                         <label style="display: inline; padding-right:10em;"for="item-photo1">Product photo 1<span class="req"> *</span></label>
                         <input class="input" type="file" id="item-photo1" name="item-photo1" accept="image/png, image/jpeg, image/jpg" required>
                         <label style="display: inline; padding-right:10em;"for="item-photo2">Product photo 2<span class="req"> *</span></label>
