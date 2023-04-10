@@ -1,7 +1,6 @@
 
 // selectors
-const $ = (selector) => document.querySelector(selector)
-const productInfoContainer = $(".productInfo-container")
+const productInfoContainer = document.querySelector(".productInfo-container")
 
 
 
@@ -36,9 +35,14 @@ function updateProductInfo() {
                                             </div>
                                         </div>
                                     </div>`
+
+    // adding jQuery effect to the current image
+    $('.productInfo-imgList').click(() => {
+        $('.productInfo-currentImg').fadeIn(1000)
+    })
     
     // updating the current image when another image from the list is clicked
-    const currentImg = $('.productInfo-currentImg')
+    const currentImg = document.querySelector('.productInfo-currentImg')
     const images = document.querySelectorAll(".productInfo-imgList")
     images.forEach(img => {
         img.addEventListener("click", (e) => {

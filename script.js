@@ -38,7 +38,7 @@ function displayProducts(str){
     // populating the products-container with data from the DB.
     let htmlData = ''
     database.forEach(item => {
-        if ((str === 'all') || (item.productName.toLowerCase() === str.toLowerCase())){
+        if ((str === 'all') || (item.productName.toLowerCase().includes(str.toLowerCase()))){
             htmlData += `<div class="product-test">
                         <img src=${item.productImg} alt=${item.productType}>
                         <div class="product-info-test">
@@ -76,6 +76,14 @@ function displayProducts(str){
 searchBtn.addEventListener("click", () => {
     const searchItem = searchBar.value
     displayProducts(searchItem)
+})
+
+// adding event listener to the enter button
+document.addEventListener("keypress", (e) => {
+    if (e.key === 'Enter' && (searchBar.value.trim(" ") !== "")){
+        displayProducts(searchBar.value)
+        console.log(searchBar.value.trim(" "))
+    }
 })
 
 // calling the displayProducts to display all products upon page load
