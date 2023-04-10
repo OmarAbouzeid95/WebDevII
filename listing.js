@@ -12,6 +12,43 @@ const itemPhoto3 = $("item-photo3")
 const itemPhoto4 = $("item-photo4")
 const itemDescription = $("item-description")
 const submitBtn = $("submit-btn")
+const wrapperDiv = $("uploadWrapper")
+
+let htmlContent = ''
+// checking if there's a user logged in
+if(localStorage.getItem("loggedUser") === null) {
+    htmlContent = `<div class="signIn-msg-container">
+                                <p>You need to sign in first.</p>
+                                <a class="allProducts-link" href="./index.html">Go to Sign in</a>
+                           </div>`
+}else {
+    htmlContent =  `<h2 class="heading">List an item</h2>
+                    <form class="list-form">
+                        <label for="name">Name<span class="req"> *</span></label>
+                        <input class="input" type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        <label style="display: inline; padding-right:10em;"for="user-photo">User photo<span class="req"> *</span></label>
+                        <input class="input" type="file" id="user-photo" name="user-photo" accept="image/png, image/jpeg, image/jpg" required>
+                        <label for="item-name">Product name<span class="req"> *</span></label>
+                        <input class="input" type="text" id="item-name" name="item-name" placeholder="iPhone 13" required>
+                        <label for="item-price">Price<span class="req"> *</span></label>
+                        <input class="input" type="text" id="item-price" placeholder="$1400" name="item-price" required>
+                        <label style="display: inline; padding-right:10em;"for="item-photo1">Product photo 1<span class="req"> *</span></label>
+                        <input class="input" type="file" id="item-photo1" name="item-photo1" accept="image/png, image/jpeg, image/jpg" required>
+                        <label style="display: inline; padding-right:10em;"for="item-photo2">Product photo 2<span class="req"> *</span></label>
+                        <input class="input" type="file" id="item-photo2" name="item-photo2" accept="image/png, image/jpeg, image/jpg" required>
+                        <label style="display: inline; padding-right:10em;"for="item-photo3">Product photo 3<span class="req"> *</span></label>
+                        <input class="input" type="file" id="item-photo3" name="item-photo3" accept="image/png, image/jpeg, image/jpg" required>
+                        <label style="display: inline; padding-right:10em;"for="item-photo4">Product photo 4<span class="req"> *</span></label>
+                        <input class="input" type="file" id="item-photo4" name="item-photo4" accept="image/png, image/jpeg, image/jpg" required>
+                        <label for="description">Product description<span class="req"> *</span></label>
+                        <textArea class="list-textArea" id = "item-description" placeholder="write a description for your product..." required></textArea>
+                        <div class="form-btns">
+                            <button style="background-color: #12CB34;" class="form-btn" id="submit-btn">Submit</button>
+                            <input style="background-color: #E01C1C;"class="form-btn" type="reset" value="Clear All">
+                        </div>
+                    </form>`
+}
+wrapperDiv.innerHTML = htmlContent
 
 // adding event listener for the submit button
 submitBtn.addEventListener("click", (e) => {
