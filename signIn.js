@@ -10,27 +10,32 @@ const db = [
     {
         name: 'Prashant',
         email: 'prashant@admin.com',
-        password: 'Helloworld100*'
+        password: 'Helloworld100*',
+        profilePicture: './user_images/michael.jpeg'
     },
     {
         name: 'Omar',
         email: 'omar@admin.com',
-        password: 'Helloworld100*'
+        password: 'Helloworld100*',
+        profilePicture: './user_images/john.jpeg'
     },
     {
         name: 'Nisha',
         email: 'nisha@admin.com',
-        password: 'Helloworld100*'
+        password: 'Helloworld100*',
+        profilePicture: './user_images/lisa.jpeg'
     },
     {
         name: 'Iram',
         email: 'iram@admin.com',
-        password: 'Helloworld100*'
+        password: 'Helloworld100*',
+        profilePicture: './user_images/sarah.jpeg'
     },
     {
         name: 'Nitin',
         email: 'nitin@admin.com',
-        password: 'Helloworld100*'
+        password: 'Helloworld100*',
+        profilePicture: './user_images/michael.jpeg'
     },
 
 ]
@@ -53,7 +58,7 @@ function validate(){
             if (email.value === user.email && password.value === user.password){
                 validUser = true
                 // adding logged in user name to the local storage
-                localStorage.setItem("loggedUser", user.name)
+                localStorage.setItem("loggedUser", JSON.stringify(user))
                 break
             }
         }

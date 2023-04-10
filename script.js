@@ -10,9 +10,9 @@ const searchBar = $('#searchbar')
 const allProducts = $('.allProducts-link')
 
 // check localStorage for the logged-in user name
-const loggedUser = localStorage.getItem("loggedUser")
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
 if (loggedUser)
-    welcomeTitle.innerText = `Welcome, ${loggedUser}`
+    welcomeTitle.innerText = `Welcome, ${loggedUser.name}`
 
 // populating the product-details container with data.
 function updateProductInfo(id){

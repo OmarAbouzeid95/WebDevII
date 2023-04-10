@@ -2,16 +2,6 @@ import database from './db.js'
 
 // selectors
 const $ = (id) => document.getElementById(id)
-const name = $("name")
-const itemName = $("item-name")
-const itemPrice = $("item-price")
-const userPhoto = $("user-photo")
-const itemPhoto1 = $("item-photo1")
-const itemPhoto2 = $("item-photo2")
-const itemPhoto3 = $("item-photo3")
-const itemPhoto4 = $("item-photo4")
-const itemDescription = $("item-description")
-const submitBtn = $("submit-btn")
 const wrapperDiv = $("uploadWrapper")
 
 let htmlContent = ''
@@ -21,13 +11,10 @@ if(localStorage.getItem("loggedUser") === null) {
                                 <p>You need to sign in first.</p>
                                 <a class="allProducts-link" href="./index.html">Go to Sign in</a>
                            </div>`
+    wrapperDiv.innerHTML = htmlContent
 }else {
     htmlContent =  `<h2 class="heading">List an item</h2>
                     <form class="list-form">
-                        <label for="name">Name<span class="req"> *</span></label>
-                        <input class="input" type="text" id="name" name="name" placeholder="Enter your full name" required>
-                        <label style="display: inline; padding-right:10em;"for="user-photo">User photo<span class="req"> *</span></label>
-                        <input class="input" type="file" id="user-photo" name="user-photo" accept="image/png, image/jpeg, image/jpg" required>
                         <label for="item-name">Product name<span class="req"> *</span></label>
                         <input class="input" type="text" id="item-name" name="item-name" placeholder="iPhone 13" required>
                         <label for="item-price">Price<span class="req"> *</span></label>
@@ -47,69 +34,85 @@ if(localStorage.getItem("loggedUser") === null) {
                             <input style="background-color: #E01C1C;"class="form-btn" type="reset" value="Clear All">
                         </div>
                     </form>`
-}
-wrapperDiv.innerHTML = htmlContent
 
-// adding event listener for the submit button
-submitBtn.addEventListener("click", (e) => {
-    e.preventDefault()
-    validate()
-})
+    wrapperDiv.innerHTML = htmlContent
 
-// function to validate inputs to be added to the DB
-function validate(){
-    // validate name of the user and price values
-    const isAlpha = str => /^[a-zA-Z ]*$/.test(str);
-    if(!isAlpha(name.value)){
-        alert("Please enter a valid full name")
-    }else if(isNaN(itemPrice.value)){
-        alert("Please enter a valid price for the product")
-    }
+    // selectors
+    const itemName = $("item-name")
+    const itemPrice = $("item-price")
+    const itemPhoto1 = $("item-photo1")
+    const itemPhoto2 = $("item-photo2")
+    const itemPhoto3 = $("item-photo3")
+    const itemPhoto4 = $("item-photo4")
+    const itemDescription = $("item-description")
+    const submitBtn = $("submit-btn")
+
+
+    // adding event listener for the submit button
+    submitBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+        validate()
+    })
     
-    // validating that all input fields are inserted
-    if(name.value.trim(' ') === '' || itemName.value.trim(' ') === '' || itemPhoto1.value === '' || itemPhoto2.value === '' || itemPhoto3.value === '' || itemPhoto4.value === '' ||
-       userPhoto.value === '' || itemDescription.value.trim(' ') === '' || itemPrice.value.trim(' ') === ''){
-        alert("Please fill out all the fields in the form before submitting")
-       }else {
+    // function to validate inputs to be added to the DB
+    function validate(){
+        
+        // validate name of the prodcut and price values
+        const isAlpha = str => /^[a-zA-Z0-9 ]+$/.test(str);
+        
+        // validating that all input fields are inserted
+        if(itemName.value.trim(' ') === '' || itemPhoto1.value === '' || itemPhoto2.value === '' || itemPhoto3.value === '' || itemPhoto4.value === '' ||
+        itemDescription.value.trim(' ') === '' || itemPrice.value.trim(' ') === ''){
+            alert("Please fill out all the fields in the form before submitting")
+        }    
+        else if(!isAlpha(itemName.value)){
+            alert("Please enter a valid product name")
+        }else if(isNaN(itemPrice.value)){
+            alert("Please enter a valid price for the product")
+        }else {
             // calling addToLocalStorage function to add to the DB
             addToLocalStorage()
-       }
-
+        }
+     
+    }
+    
+    // function that adds items to the localStorage
+    function addToLocalStorage(){
+    
+        let localStorageData = JSON.parse(localStorage.getItem("db"))
+        // using length to identify the last ID number used in the db
+        let id = 0
+        // check if there's any data in the local storage before adding
+        if (localStorageData !== null){
+            id = localStorageData.length + database.length + 1
+        }else{
+            id = database.length + 1
+            localStorageData = []
+        }
+    
+        const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    
+        // initializing the item to be pushed
+        const item = {
+            id: id,
+            name: loggedUser.name,
+            profilePicture: loggedUser.profilePicture,
+            productName: itemName.value,
+            productImg: itemPhoto1.value.replace("C:\\fakepath\\", "./electronics_imgs/"),
+            productType: itemName.value.toLowerCase(),
+            productImgList: [itemPhoto1.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto2.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto3.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto4.value.replace("C:\\fakepath\\", "./electronics_imgs/")],
+            productPrice: itemPrice.value,
+            productDescription: itemDescription.value
+        }
+    
+        // finally adding the item to the DB
+        localStorageData.push(item)
+        localStorage.setItem("db", JSON.stringify(localStorageData))
+    
+        // redirecting to the homepage after
+        location.href = "./products.html"
+    
+    }
 }
 
-// function that adds items to the localStorage
-function addToLocalStorage(){
-
-    let localStorageData = JSON.parse(localStorage.getItem("db"))
-    // using length to identify the last ID number used in the db
-    let id = 0
-    // check if there's any data in the local storage before adding
-    if (localStorageData !== null){
-        id = localStorageData.length + database.length + 1
-    }else{
-        id = database.length + 1
-        localStorageData = []
-    }
-
-    // initializing the item to be pushed
-    const item = {
-        id: id,
-        name: name.value,
-        profilePicture: userPhoto.value.replace("C:\\fakepath\\", "./user_images/"),
-        productName: itemName.value,
-        productImg: itemPhoto1.value.replace("C:\\fakepath\\", "./electronics_imgs/"),
-        productType: itemName.value.toLowerCase(),
-        productImgList: [itemPhoto1.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto2.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto3.value.replace("C:\\fakepath\\", "./electronics_imgs/"), itemPhoto4.value.replace("C:\\fakepath\\", "./electronics_imgs/")],
-        productPrice: itemPrice.value,
-        productDescription: itemDescription.value
-    }
-
-    // finally adding the item to the DB
-    localStorageData.push(item)
-    localStorage.setItem("db", JSON.stringify(localStorageData))
-
-    // redirecting to the homepage after
-    location.href = "./products.html"
-
-}
 
