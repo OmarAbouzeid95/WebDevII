@@ -1,3 +1,4 @@
+import db from './db.js'
 
 // selectors
 const $ = (id) => document.getElementById(id)
@@ -36,6 +37,15 @@ function validate(){
              +"- Min 1 Number\n"
              +"- Min 8 characters")
     } else {
+
+        const signedUpUser = {
+            name: firstName.value,
+            email: email.value,
+            password: password.value,
+            profilePicture: './user_images/john.jpeg'
+        }
+
+        localStorage.setItem("users", JSON.stringify(signedUpUser))
         // alert user sign up is successful
         alert("Signed up successfully")
         // redirect to the sign in page

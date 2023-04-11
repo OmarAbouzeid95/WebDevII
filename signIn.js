@@ -40,6 +40,9 @@ const db = [
 
 ]
 
+const signedUpUser = JSON.parse(localStorage.getItem("users"))
+db.push(signedUpUser)
+
 // function to validate user inputs and compare results to the DB
 function validate(){
 
@@ -79,3 +82,6 @@ submitBtn.addEventListener("click", (e) => {
     // calling the validate function
     validate()
 })
+
+
+export default db

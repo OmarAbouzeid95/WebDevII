@@ -37,8 +37,8 @@ function updateProductInfo() {
                                     </div>`
 
     // adding jQuery effect to the current image
-    $('.productInfo-imgList').click(() => {
-        $('.productInfo-currentImg').fadeIn(1000)
+    $('.productInfo-currentImg').click(() => {
+        $(this).fadeOut(1000)
     })
     
     // updating the current image when another image from the list is clicked
